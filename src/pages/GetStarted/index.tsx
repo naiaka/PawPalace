@@ -1,18 +1,27 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useEffect } from 'react';
 import GetStarted from '../../assets/icon/getstarted.svg';
 
-const SplashScreen = () => {
+const GetStartedScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <GetStarted style={styles.logo} />
-      <Text style={styles.text}>Ready to make </Text>
-      <Text style={styles.text}>a new friend</Text>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Ready to make a</Text>
+        <Text style={styles.text}>new friend?</Text>
+        <Text style={styles.text1}>
+          Caring Together: Your Contribution, Their
+        </Text>
+        <Text style={styles.text1}>Second Chance</Text>
+        <TouchableOpacity style={styles.buttonContainer} onPress={() => navigation.navigate('SignIn')}>
+          <Text style={styles.buttonText}>Get Started >> </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-export default SplashScreen;
+export default GetStartedScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,11 +38,30 @@ const styles = StyleSheet.create({
     marginTop: 0, // Setengah dari tinggi gambar
     marginLeft: -47, // Setengah dari lebar gambar
   },
+  textContainer: {
+    marginTop: 402,
+    alignItems: 'center',
+  },
   text: {
     fontSize: 32,
     fontFamily: 'Poppins-SemiBold',
     color: '#000',
-    marginTop:-30, // Setengah dari tinggi gambar
-    marginLeft: -15, // Setengah dari lebar gambar
+  },
+  text1: {
+    marginTop: 10,
+  },
+  buttonContainer: {
+    marginTop: 20,
+    backgroundColor: '#000',
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    height: 65,
+  },
+  buttonText: {
+    marginTop: 10,
+    fontSize: 18,
+    color: '#FFF',
+    fontFamily: 'Poppins-Regular',
   },
 });
